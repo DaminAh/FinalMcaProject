@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="/css/style-main.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link href="/css/style-main.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="all-container">
+    <div style="height: 90px;border:3px solid black ;">Dummy Here</div>
+
+    <div class="container main-container">
+      <div class="row ">
+        <div class="col-lg-9 iframe-cont ">
+          <%- data.urls[0] %>
+        </div>
+
+
+
+        <div class="col-lg-3  desc-container">
+          <div class="card-main-container">
+            <div>
+              <img src="/images/card-img.webp"
+                style="height: 150px;width: auto; margin-bottom: 10px;border-radius: 10px;">
+            </div>
+            <div class="card-container">
+              <div>
+                <h4>
+                  <span class="card-heading">Course</span>
+                  <%= data.c_name; %>
+                </h4>
+                <p><%= data.c_des %> </p>
+              </div>
+            </div>
+            <div class="card-container">
+              <div>
+                <h4>
+                  <span class="card-heading">Teacher</span>
+                  <%= data.t_name; %>
+                </h4>
+                <p><%= data.t_description %> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="buttonContaniner">
+      <div class="b-one">
+        <h4 class="card-heading sub-heading">Course Playlist:</h4>
+      </div>
+      <div>
+        <% for(let i=0;i<data.no_videos;i++){ %>
+        <button class="btn btn-vid" type="button" data-iframe="<%= data.urls[i] %> "><%=i%></button> 
+        <% } %>
+        <!-- <button class="btn btn-vid" type="submit">0 </button>
+        <button class="btn btn-vid" type="submit">1 </button>
+        <button class="btn btn-vid" type="submit">2 </button>
+        <button class="btn btn-vid" type="submit">3 </button>
+        <button class="btn btn-vid" type="submit">4 </button>
+        <button class="btn btn-vid" type="submit">5 </button> -->
+      </div>
+
+    </div>
+
+    
+
+
+
+
+
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
+    <script src="/js/main.js"></script>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+   
+}
+
+
+.main-bar {
+    background-color:#fff;
+    padding: 8px;
+}
+
+.container-fluid {}
+
+.search-icon {
+    display: inline;
+}
+
+.toogle-img {
+    margin-right: 10px;
+}
+
+.main-profile {
+    text-align: right;
+}
+
+.drop-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+}
+
+.search-box {
+    margin-top: 5px;
+    border: 2px solid black;
+    margin-left: 10px;
+}
+
+
+
+.web-title {
+    font-size: 2rem;
+    margin: 0 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.side-bar{
+    height: 800px;
+    background-color: #EE6C4D;
+   
+   
+}
+.ul-one,.ul-two {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+   
+}
+
+a {
+    text-decoration: none;
+}
+
+.side-links {
+    text-decoration: none;
+    color: black;
+}
+
+.main-content {
+/*    width: 80%;*/
+    height: 800px;
+    background-color:#ECEFF0;
+}
+
+.main {
+    position: relative;
+}
+
+
+
+li:hover {
+    background: rgba(255,255,255,.2);    
+}
+
+li{
+   
+    position: relative;
+}
+
+.horizontal-rule {
+      height:0;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    width: 90%;
+    margin:20px auto;
+}
+
+.side-bar-icon {
+    margin: 10px 10px;
+    text-align: end;
+}
+
+.link-text {
+    
+    position: absolute;
+    left: 60px;
+    top: 18px;
+
+}
+@media screen(max-width: 600px) {
+    
+}
+.main-left {
+    height: auto:;
+    background-color: #EE6C4D;
+    padding-top: .5rem;
+    border-radius: 10px;
+    
+}
+
+.main-right {
+    height: auto;
+    background-color: #ECEFF0;
+    border-radius: 10px;
+
+}
+
+.watch {
+    margin-left: 15px;
+ 
+}
+
+.gallery-item {
+    flex-basis: 22%;
+    height: 350px;
+/*    background-color: #ecb390;*/
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+   font-family: 'Montserrat', sans-serif;
+}
+
+.latest-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.video-item {
+    border-radius: 10px;
+}
+
+.title-one {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-left: 15px;
+}
+
+.gallery-div:hover {
+     background: rgba(0,0,0,.4); 
+    border-radius: 10px;
+    
+}
+
+.gallery-item:hover{
+    transform: translateY(-10px);
+}
+
+.watch-two {
+    background-color: aqua;
+    
+    
+}
+
+.main-two {
+    display: flex;
+    background-color:blueviolet;
+}
+
+.tutorial-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+}
+
+.tgallery-item {
+    border-radius: 10px;
+    flex-basis: 18%;
+    height: 400px;
+/*    background-color: brown;*/
+    border-radius: 10px;
+    text-align: center;
+   font-family: 'Montserrat', sans-serif;
+    margin-top: 10px;
+}
+
+.tgallery-item:hover{
+    transform: translateY(-10px);
+}
+
+.t-frame {
+    display: block;
+    width: 100%;
+}
+
+.main-video {
+    
+     height: 1200px;
+}

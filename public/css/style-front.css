@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+
+body{
+    background-color: #ECEFF0;
+}
+
+.section-one {
+  padding: 0 15% 7%;
+  background-color: #EE6C4D;
+  height: auto;
+  /*    position: relative;*/
+}
+
+.navbar {
+  font-family: "Ubuntu", sans-serif;
+  padding-top: 1rem;
+  /*     background-color: #FF4b2b;*/
+  background-color: #EE6C4D;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.nav-item {
+  padding: .6rem;
+}
+
+.nav-link {
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+
+.img-one {
+  width: 500px;
+  height: auto;
+  margin-top: 7rem;
+}
+
+.btn {
+  margin-right: 2rem;
+}
+
+.container-two {
+  /*    border: 1px solid black;*/
+  width: 500px;
+  height: 600px;
+  /*    background-color: aqua;*/
+  position: relative
+}
+
+#inner-text {
+  font-family: 'Lora', serif;
+  font-size: 36px;
+  color: white;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#inner-text-two {
+  /* font-family: 'Ubuntu', sans-serif; */
+  /* color: rgb(0, 35, 51); */
+  font-size: 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  margin-top: 1rem;
+  position: absolute;
+  left: 0;
+  color: white;
+}
+
+/*Quote Animation*/
+.animated-shadow-quote {
+  display: inline-block;
+  margin: 1em;
+  max-width: 20em;
+  position: relative;
+}
+
+.animated-shadow-quote blockquote {
+  animation: shadows 2s linear infinite alternate;
+  display: inline-block;
+  margin: 0;
+  padding: 1em;
+}
+
+.animated-shadow-quote blockquote cite {
+  display: block;
+  font-style: italic;
+  text-align: right;
+}
+
+.animated-shadow-quote blockquote cite:before {
+  content: "- ";
+}
+
+@keyframes shadows {
+  0% {
+    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, .25);
+    transform: scale(0.95);
+  }
+
+  100% {
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, .25);
+    transform: scale(1);
+  }
+}
+
+/* Media queries for section one */
+
+@media (max-width:1028px) {
+
+  #title {
+    text-align: center;
+  }
+ 
+
+}
+
+/*Here lies the CSS for Features Section*/
+.features {
+  padding: 0 15%;
+  margin-top: 6.25rem;
+/*  background-color: #ECEFF0;*/
+}
+
+.features-h3{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.features i:hover {
+  color: rgb(238, 108, 77);
+  color: #FF416C;
+}
+
+.features i {
+  color: #EE6C4D;
+}
+
+.features p {
+  font-family: "ubuntu", sans-serif;
+  color: gray;
+  margin-bottom: 6rem;
+}
+
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.rotating:hover {
+  -webkit-animation: rotating 2s linear infinite;
+}
+
+.fab {
+  margin-left: .6rem
+}
+
+.nav-ico {
+  margin: 5px
+}
+
+.row-section-two {
+  text-align: center;
+}
+
+.btn-sec-one {
+  margin-right: 1.2rem;
+}
+
+.container-carousel {
+  background-color: #EE6C4D;
+}
+
+.img-two {
+  width: 400px;
+  height: auto
+}
+
+.test {
+  background-color: #EE6C4D;
+}
+
+
+
+.quote-h2 {
+  line-height: 1.4;
+  margin-top: 1.5rem;
+}
+
+.quote-h1 {
+  margin-left: 5px;
+}
+
+/*Here starts the css for the section three*/
+
+#carousel {
+    
+    background-color: #EE6C4D;
+    height: 500px
+}
+
+.carousel-img {
+float: left;
+    margin: 20px 20px 0 0;
+    
+}
+
+.carousel-content {
+    height: 450px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    padding: 0.05px;
+}
+
+.carousel-text {
+    width: 62.5rem;
+    margin-top: 7rem;
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    color: white;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.carousel-h3 {
+    font-size:italic;
+}
+
+.dummy-div {
+    background-color: #EE6C4D;
+}
+
+.carousel-item {
+    margin: 0 15% 10%;
+}
+
+#footer{
+  text-align: center;
+    margin: 60px 0;
+/*    background-color: #ECEFF0;*/
+}
+#footer p{
+  color: #8f8f8f;
+}
+
+.social-icon {
+    padding: 10px;     
+}
+
+.instaicon {
+    margin-right: 10px
+}
