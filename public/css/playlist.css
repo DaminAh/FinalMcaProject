@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ECEFF0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  /* border: 1px solid black; */
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.himg {
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
+.h-heading {
+  width: 100%;
+  /* border: 1px solid green; */
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: lighter;
+}
+
+header img {
+  border-radius: 20px;
+}
+
+.playlist-container {
+  /* border: 1px solid red; */
+  height: auto;
+}
+
+.playlist-section {
+  margin-top: 20px;
+  background-color: #EE6C4D;
+  padding: 20px;
+  border-radius: 10px;
+  padding-left: 100px;
+}
+
+.playlist-item {
+  /* border: 1px solid black; */
+  height: 170px;
+  /* background-color: rgba(255, 255, 255, 0.1) */
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  display: flex;
+  margin-bottom: 5px;
+  background-color: rgb(231, 231, 146);
+}
+
+.thumbnail img {
+  height: 140px;
+  width: 250px;
+  border-radius: 10px;
+  margin-right: 10px;
+  /* margin-left: 10px; */
+}
+
+.info {
+  width: 100%;
+  border: 2px solid #ECEFF0;
+  position: relative;
+  padding-top: 5px;
+  border-radius: 10px;
+  
+}
+
+.course-name{
+  width: fit-content;
+  padding: 0 0 0 8px;
+}
+
+.course-name h1{
+  background-color: #ECEFF0;
+  width:max-content;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.course-domain { 
+  display: flex;
+  flex-direction: row;
+  justify-content:last baseline;
+}
+
+.course-domain p {
+  margin-right: 10px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #ECEFF0;
+  border-radius: 5px;
+  margin-top: 4px;
+  margin-left: 10px;
+  padding: 2px;
+}
+
+.btn-container{
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+}
+
+.link{
+  border-radius: 10px;
+}

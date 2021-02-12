@@ -1,25 +1,36 @@
-let formOne=document.querySelector('#form-one');
-console.log('working');
-formOne.addEventListener('submit',async (e)=>{
-  // e.preventDefault()
-  // console.log('in from');
-  // const c=axios.post('http://localhost:3000/test', {
-  //   firstName: 'Fred',
-  //   lastName: 'Flintstone'
-  // }).then(function(response) {
-  //   console.log(response);
-  // })
-  // console.log('post made')
-  // console.log(c)
+let formOne = document.querySelector('#form-one');
+console.log('working again');
+formOne.addEventListener('submit', async (e) => {
+  // e.preventDefault();
+  // try{
+  // const a=await fetch("/test/45", { method: "post",body: JSON.stringify({  name: 'hello' })});
+  // console.log(formOne.name.value)
+  // console.log('in form body');
+  // }
+  // catch(e){ console.log('error occured',e)
+  // }
 })
 
-s=document.querySelector('#haha')
-console.log('working')
-s.addEventListener('click',e=>{
-  console.log('working inside')
-  console.log(" s clicked")
-  axios.post('/test', {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
-  })
+console.log('heheh')
+
+let _data = {
+  title: "foo",
+  body: "bar",
+  userId: 1
+}
+formOne.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  try {
+    const response = await fetch("/test/98", {
+      method: "post",
+      body: JSON.stringify(_data),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    });
+    const result = await response.json(); // if your server returns json.
+    console.log(result)
+  } catch (e) {
+    console.log(e) /* handle error */
+  }
 })

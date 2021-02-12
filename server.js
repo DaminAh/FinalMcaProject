@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override')
 const { auth, requiresAuth } = require('express-openid-connect');
 const Course = require('./models/course');
+const Playlist=require('./models/playlist')
+const { json } = require('express');
 require('dotenv').config();
 
 // app.use(express.static(path.join(__dirname, 'static')));
@@ -70,8 +72,26 @@ app.get('/courses/:c_id',requiresAuth(), async(req,res)=>{
     res.render('main-course.ejs',{data})
   }catch(e){
     console.log('error occured');
-    // console.log(e)
   }
+})
+
+app.get('/playlist',async (req,res)=>{
+  const{email}=req.oidc.user;
+  let name=[];
+  let subject=[];
+  const data = await Playlist.findOne({email});
+  console.log(data);
+  const len=data.playIds.length;
+  // console.log(len);
+  for(let i=0;i<len;i++){
+    let beta=await Course.findOne({c_id:data.playIds[i]});
+    // console.log(beta.c_name)
+    name.push(beta.c_name);
+    subject.push(beta.domain);
+  }
+  console.log(name,subject)
+
+  res.render('playlist.ejs',{data,name,subject})
 })
 
 app.get('/test',(req,res)=>{
@@ -81,8 +101,11 @@ app.get('/test',(req,res)=>{
 app.post('/test/:id',(req,res)=>{
   console.log(req.body)
   console.log(req.params)
-  console.log("request recieved")
-  res.send("test successful");
+  console.log("request recieved");
+  let str = {UserName:"xxx",Rolename:"yyy"};
+  str=JSON.stringify(str);
+  console.log(str);
+  return JSON.stringify(str);
 })
 
 const port =process.env.PORT || 3000;
