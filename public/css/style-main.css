@@ -10,6 +10,7 @@
 
 body {
   background-color: #EE6C4D;
+  font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -22,6 +23,7 @@ body {
   height: 50px;
   border: 1px solid black;
   height: auto;
+  border-right: none;
   border-radius: 2rem;
   background-color: #ECEFF0;
 }
@@ -34,6 +36,12 @@ iframe {
   margin-left: 25px;
   margin-top: 20px;
   border-radius: 2rem;
+}
+
+.iframe-cont:hover{
+  background:slategrey;
+  transition:background 1s ease-in
+
 }
 
 .desc-container {
@@ -54,7 +62,7 @@ iframe {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -75,9 +83,12 @@ iframe {
   transition: transform 500ms ease-out;
 }
 
-.sub-heading {
-  width: 200px;
+#sub-heading {
+  /* width: au; */
   font-family: 'Montserrat', sans-serif;
+  padding: 1rem;
+  border-radius: 20px;
+  
 }
 
 
@@ -100,4 +111,72 @@ iframe {
   border-radius: 6px;
   display: block;
   margin-bottom: 5px;
+  color: #ECEFF0;
+  background-color: black;
+}
+
+/* ..................................... */
+
+.navbar {
+  background-color: #ECEFF0;
+}
+#nav-a{
+  font-size: 2rem;
+}
+#nav-a:hover {
+  color: black;
+  font-size: 2rem;
+  transform: translate(40px);
+}
+
+.navbar-brand:hover{
+text-decoration-color: #fbc531;
+}
+
+.navbar .navbar-nav .nav-link {
+  color: black;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  color: #fbc531;
+}
+
+.navbar .navbar-nav .active>.nav-link {
+  color: #fbc531;
+}
+
+footer a:hover { color: #fed136!important; text-decoration: none; }
+footer a{
+  text-decoration: none; 
+}
+footer .cizgi { border-right: 1px solid #ECEFF0 }
+@media (max-width: 992px) { footer .cizgi { border-right: none; } }
+
+.footer-cards{
+  background-color: #ECEFF0;
+}
+
+.card-title{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  font-weight: unset;
+}
+.icon-a{
+  display: block;
+  margin-top: .5rem;
+}
+.icon{
+  margin-right: .3rem;
+}
+
+.sm-icon{
+  color: black;
+}
+.sm-icon:hover{
+  transform: scale(.7);
+  transition: transform 500ms ease-out;
+}
+footer{
+  background-color: #EE6C4D;
+  
 }

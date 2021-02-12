@@ -41,11 +41,11 @@ app.use(
 
 
 
-app.get('/',(req,res)=>{
+app.get('/', async (req,res)=>{
   // console.log(req.oidc.isAuthenticated())
   if(req.oidc.isAuthenticated()){
-    console.log(req.params)
-    res.render('home-page.ejs')
+    const data= await Course.find({c_id:{$lt:10}});
+    res.render('home-page.ejs',{data})
   }
   else{
     console.log(req.params)
@@ -54,7 +54,10 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/profile',requiresAuth(),(req,res)=>{
-  res.send(JSON.stringify(req.oidc.user))
+  const data=req.oidc.user;
+  console.log(data);
+  res.render('profile.ejs',{data})
+  // res.send(JSON.stringify(req.oidc.user))
 })
 
 app.get('/courses/:c_id',requiresAuth(), async(req,res)=>{
@@ -72,8 +75,14 @@ app.get('/courses/:c_id',requiresAuth(), async(req,res)=>{
 })
 
 app.get('/test',(req,res)=>{
-  res.render('main-course.ejs');
+  res.render('test.ejs');
+})
+
+app.post('/test/:id',(req,res)=>{
+  console.log(req.body)
   console.log(req.params)
+  console.log("request recieved")
+  res.send("test successful");
 })
 
 const port =process.env.PORT || 3000;

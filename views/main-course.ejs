@@ -5,84 +5,162 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="/css/style-main.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <title >Course <%= data.c_name %> </title>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/4ed4d66ea3.js" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap CSS and JS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> -->
+
+  <!-- Main CSS File -->
   <link href="/css/style-main.css" rel="stylesheet">
 </head>
 
 <body>
   <div class="all-container">
-    <div style="height: 90px;border:3px solid black ;">Dummy Here</div>
+    <div class="container" style="padding: 0">
 
-    <div class="container main-container">
-      <div class="row ">
-        <div class="col-lg-9 iframe-cont ">
-          <%- data.urls[0] %>
-        </div>
-
-
-
-        <div class="col-lg-3  desc-container">
-          <div class="card-main-container">
-            <div>
-              <img src="/images/card-img.webp"
-                style="height: 150px;width: auto; margin-bottom: 10px;border-radius: 10px;">
+      <nav class="navbar navbar-expand-lg " style="border-radius: 20px;">
+        <div class="container-fluid">
+          <a class="navbar-brand text-dark  " id="nav-a" href="/"><i class="fa fa-graduation-cap fa-lg mr-2"></i>CHINAR
+            ACADEMY</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
+            style="background-color:white;">
+            <span class="navbar-toggler-icon"><i class="fas fa-caret-square-down"></i></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav  ms-auto   ">
+              <a class="nav-link active me-3" aria-current="page" href="/">Home</a>
+              <a class="nav-link me-3" href="">Browse</a>
+              <a class="nav-link me-3" href="/profile">Profile</a>
+              <a class="nav-link me-3 btn btn-outline-dark" href="/logout" tabindex="-1">Logout</a>
             </div>
-            <div class="card-container">
-              <div>
-                <h4>
-                  <span class="card-heading">Course</span>
-                  <%= data.c_name; %>
-                </h4>
-                <p><%= data.c_des %> </p>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+  </div>
+
+  <div class="container main-container">
+    <div class="row ">
+      <div class="col-lg-9 iframe-cont ">
+        <%- data.urls[0] %>
+      </div>
+
+
+
+      <div class="col-lg-3  desc-container">
+        <div class="card-main-container">
+          <div>
+            <img src="/images/card-img.webp"
+              style="height: 150px;width: auto; margin-bottom: 10px;border-radius: 10px;">
+          </div>
+          <div class="card-container">
+            <div>
+              <h4>
+                <span class="card-heading">Course</span>
+                <%= data.c_name; %>
+              </h4>
+              <p><%= data.c_des %> </p>
+            </div>
+          </div>
+          <div class="card-container">
+            <div>
+              <h4>
+                <span class="card-heading">Teacher</span>
+                <%= data.t_name; %>
+              </h4>
+              <p><%= data.t_description %> </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="buttonContaniner">
+    <div class="b-one">
+      <h4 class="card-heading " id="sub-heading">Course Playlist : </h4>
+    </div>
+    <div>
+      <% for(let i=0;i<data.no_videos;i++){ %>
+      <button class="btn btn-vid" type="button" data-iframe="<%= data.urls[i] %> "><%=i+1%></button>
+      <% } %>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <footer class="container" >
+    <div class="jumbotron jumbotron-fluid  p-4 mt-5 mb-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 cizgi">
+            <div class="card border-0 text-dark footer-cards" style="border-radius: 20px;">
+              <div class="card-body  text-dark text-center" >
+                <h5 class="card-title text-dark display-4" >Chinar Academic</h5>
+                <p class="d-inline lead text-dark">PVT Limited © 2021<br>
+                  <p class="d-inline lead text-dark">Kashmir<br>
+
+                </p>
+
               </div>
             </div>
-            <div class="card-container">
-              <div>
-                <h4>
-                  <span class="card-heading">Teacher</span>
-                  <%= data.t_name; %>
-                </h4>
-                <p><%= data.t_description %> </p>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 cizgi" ">
+            <div class="card footer-cards" style="border-radius: 20px;">
+              <div class="card-body text-center">
+                <h5 class="card-title text-dark display-4">Contact</h5>
+                <a class="text-light d-block lead icon-a" style="margin-left: -20px" href="#"><i
+                    class="fa fa-phone fa-cog  text-dark icon"></i class='text-dark'><span class="text-dark">+91 0000 000 000</span></a>
+                <a class="text-dark d-block lead icon-a" href="#"><i class="fa fa-envelope icon"></i>admin@localhost.com</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <div class="card footer-cards border-0" style="border-radius: 20px;">
+              <div class="card-body text-center">
+                <h5 class="card-title text-dark display-4" >Social Media</h5>
+
+                <a class="text-light" href="https://www.facebook.com"><i class="fab fa-facebook-square fa-3x sm-icon"></i></a>
+
+                <a class="text-light" href="https://www.twitter.com"><i class="fa fa-twitter-square fa-fw fa-3x sm-icon"></i></a>
+
+                <a class="text-light" href="https://www.instagram.com"><i class="fa fa-instagram fa-fw fa-3x sm-icon"></i></a>
+
+                <a class="text-light" href="https://www.linkedin.com"><i class="fa fa-linkedin fa-fw fa-3x sm-icon"></i></a>
+
+                
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </footer>
+  <!--# Footer #-->
 
-    <div class="container" id="buttonContaniner">
-      <div class="b-one">
-        <h4 class="card-heading sub-heading">Course Playlist:</h4>
-      </div>
-      <div>
-        <% for(let i=0;i<data.no_videos;i++){ %>
-        <button class="btn btn-vid" type="button" data-iframe="<%= data.urls[i] %> "><%=i%></button> 
-        <% } %>
-        <!-- <button class="btn btn-vid" type="submit">0 </button>
-        <button class="btn btn-vid" type="submit">1 </button>
-        <button class="btn btn-vid" type="submit">2 </button>
-        <button class="btn btn-vid" type="submit">3 </button>
-        <button class="btn btn-vid" type="submit">4 </button>
-        <button class="btn btn-vid" type="submit">5 </button> -->
-      </div>
-
-    </div>
-
-    
-
-
-
-
-
-    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
-    </script>
-    <script src="/js/main.js"></script>
-
-  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+  </script>
+  <script src="/js/main.js"></script>
 </body>
 
 </html>

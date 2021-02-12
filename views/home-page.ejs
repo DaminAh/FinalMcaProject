@@ -50,11 +50,11 @@
                                 <img class="drop-img" src="Images/profile-icon.jpg">
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="text-align: center;">
-                                <a class="dropdown-item" href="#">
-                                    <a href="/logout"> <button>Logout</button>  </a>
-                                </a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a href="/logout" class="dropdown-item " style="border: 1px solid black;
+                                border-radius: 10px;background-color: silver;"> Logout </a>
+                                <a href="/profile" class="dropdown-item " style="border: 1px solid black;
+                                border-radius: 10px;border-top: none;background-color: silver;">Profile</a>
+
                             </div>
                         </div>
                     </div>
@@ -89,102 +89,31 @@
                     <div>
                         <h4 class="watch">Watch List</h4>
                         <a href="/courses/1">JS Course One</a>
+                        <a href="/courses/2">Algorithim course</a>
+                        <a href="/courses/3">Algorithim course</a>
                     </div>
                 </div>
 
                 <div class="col-lg-10 main-right">
                     <div class="title-one"><Span>Latest Courses</Span></div>
+
                     <div class="latest-gallery">
-                        <div class="gallery-item">
-                            <iframe class="video-item" width="273px" height="200px"
-                                src="https://www.youtube.com/embed/0IAPZzGSbME" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <div class="gallery-div">
-                                <h4>Algorithims & Design</h4>
-                                <p>Teacher: Mr Abdul Bari <br> Stream: Computer Science</p>
-                            </div>
-                        </div>
+                        <% let i=0 %>
 
+                        <% for(let i=0;i<9;i++) {%>
+                        <!-- <%= data[i].t_name %>  -->
                         <div class="gallery-item">
-                            <iframe class="video-item" width="273px" height="200px"
-                                src="https://www.youtube.com/embed/Qqx_wzMmFeA" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                            <div class="gallery-img">
+                                <img src='/images/<%= i+1 %>.jpg' class="video-item"></div>
                             <div class="gallery-div">
-                                <h4>Java Script </h4>
-                                <h4>Java Script </h4>
-                                <p>Teacher: Antosh Sanket <br> Stream: Computer Science</p>
+                                <h4><%= data[i].c_name %> </h4>
+                                <p style="margin:0">Teacher:<%= data[i].t_name %> <br> Domain: <%= data[i].domain %></p>
+                                <a href="/courses/<%= data[i].c_id %> " class="btn btn-secondary btn-sm">Watch</a>
                             </div>
                         </div>
-
-                        <div class="gallery-item">
-                            <iframe class="video-item" width="273px" height="200px"
-                                src="https://www.youtube.com/embed/TL0K0AhI7kE" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <div class="gallery-div">
-                                <h4>Marketing </h4>
-                                <p>Teacher:Dr. Manfred Kirchgeorg <br> Stream: Commerce</p>
-                            </div>
-                        </div>
-
-                        <div class="gallery-item">
-                            <iframe class="video-item" width="273px" height="200px"
-                                src="https://www.youtube.com/embed/w3GV9pumczQ" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <div class="gallery-div">
-                                <h4>Calculus </h4>
-                                <p>Teacher:Mr Khorne Bezerker <br> Stream: Maths</p>
-                            </div>
-                        </div>
-
-                        <div class="gallery-item">
-                            <iframe class="video-item" width="273px" height="200px"
-                                src="https://www.youtube.com/embed/rggj5iVXIKE" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <div class="gallery-div">
-                                <h4>Cellular Biology</h4>
-                                <p>Teacher: Mr David Woodruff <br> Stream: Medical Science</p>
-                            </div>
-                        </div>
-
-                        <div class="gallery-item">
-                            <iframe class="video-item" width="273px" height="200px"
-                                src="https://www.youtube.com/embed/oywlcbS8FdA" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <div class="gallery-div">
-                                <h4>Structure of Atom </h4>
-                                <p>Teacher: Manocha Academy <br> Stream: Chemistry</p>
-                            </div>
-                        </div>
-
-                        <div class="gallery-item">
-                            <iframe class="video-item" width="273px" height="200px"
-                                src="https://www.youtube.com/embed/IyR_uYsRdPs" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <div class="gallery-div">
-                                <h4>Photoshop for Beginners </h4>
-                                <p>Teacher: Mr Dan Scott <br> Stream: Design and Art</p>
-                            </div>
-                        </div>
-
-                        <div class="gallery-item">
-                            <iframe class="video-item" width="273px" height="200px"
-                                src="https://www.youtube.com/embed/6qCkhR1Z2qw" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                            <div class="gallery-div">
-                                <h4>Tally ERP </h4>
-                                <p>Academy: Happy Learny<br> Stream: Commerce</p>
-                            </div>
-                        </div>
+                        <% } %>
                     </div>
-
+                        <div><hr style="border:none;height: 0;border-top:3px solid black ;"></div>
                     <!--                    Here ends gallery section and starts latest section-->
                     <div class="tutorials">
                         <div class="title-one"><Span>Tutorials</Span></div>
