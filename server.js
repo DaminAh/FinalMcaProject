@@ -90,6 +90,7 @@ app.get('/courses/:c_id', requiresAuth(), async (req, res) => {
     res.render('main-course.ejs', {
       data
     })
+    // res.send({data})
   } catch (e) {
     console.log(e)
     console.log('error occured');
