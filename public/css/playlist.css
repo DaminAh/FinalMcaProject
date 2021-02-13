@@ -115,3 +115,15 @@ header img {
 .link{
   border-radius: 10px;
 }
+
+#error{
+  height: 400px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#error-p{
+  color: #ECEFF0;
+}

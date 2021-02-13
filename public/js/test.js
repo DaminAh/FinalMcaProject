@@ -1,18 +1,16 @@
 let formOne = document.querySelector('#form-one');
 console.log('working again');
-formOne.addEventListener('submit', async (e) => {
-  // e.preventDefault();
-  // try{
-  // const a=await fetch("/test/45", { method: "post",body: JSON.stringify({  name: 'hello' })});
-  // console.log(formOne.name.value)
-  // console.log('in form body');
-  // }
-  // catch(e){ console.log('error occured',e)
-  // }
-})
-
+// formOne.addEventListener('submit', async (e) => {
+//   e.preventDefault();
+//   try{
+//   const a=await fetch("/test/45", { method: "post",body: JSON.stringify({  name: 'hello' })});
+//   console.log(formOne.name.value)
+//   console.log('in form body');
+//   }
+//   catch(e){ console.log('error occured',e)
+//   }
+// })
 console.log('heheh')
-
 let _data = {
   title: "foo",
   body: "bar",

@@ -5,29 +5,29 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <script src="https://kit.fontawesome.com/4ed4d66ea3.js" crossorigin="anonymous"></script>
-
-
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/style-home.css" type="text/css">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Ubuntu&display=swap"
         rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="/css/style-home.css" type="text/css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 
     <title>Hello, world!</title>
 </head>
 
-<body>
+<body style="position: relative;">
+
+
     <header>
         <div class="container-fluid px-0">
             <div class="main-bar">
@@ -77,8 +77,8 @@
                     <hr class="horizontal-rule">
 
                     <ul class="ul-two">
-                        <li><i class="fas fa-history side-bar-icon fa-2x"></i><a class="side-links" href=""><span
-                                    class="link-text">History</span></a></li>
+                        <li><i class="fas fa-history side-bar-icon fa-2x"></i><a class="side-links" href="/playlist"><span
+                                    class="link-text">Playlist</span></a></li>
                         <li><i class="fas fa-compass side-bar-icon fa-2x"></i><a class="side-links" href=""><span
                                     class="link-text">Browse Courses</span></a></li>
                         <li><i class="fas fa-hands-helping side-bar-icon fa-2x"></i><a class="side-links" href=""><span
@@ -91,6 +91,7 @@
                         <a href="/courses/1">JS Course One</a>
                         <a href="/courses/2">Algorithim course</a>
                         <a href="/courses/3">Algorithim course</a>
+                        <a href="/playlist">Playlist</a>
                     </div>
                 </div>
 
@@ -99,22 +100,34 @@
 
                     <div class="latest-gallery">
                         <% let i=0 %>
-
                         <% for(let i=0;i<9;i++) {%>
                         <!-- <%= data[i].t_name %>  -->
                         <div class="gallery-item">
+                            <div class="pop-up display-false" id="pop-<%= i %>">
+                                <p> Done</p>
+                            </div>
                             <div class="gallery-img">
                                 <img src='/images/<%= i+1 %>.jpg' class="video-item"></div>
                             <div class="gallery-div">
                                 <h4><%= data[i].c_name %> </h4>
                                 <p style="margin:0">Teacher:<%= data[i].t_name %> <br> Domain: <%= data[i].domain %></p>
-                                <a href="/courses/<%= data[i].c_id %> " class="btn btn-secondary btn-sm">Watch</a>
-                                <a href="/courses/<%= data[i].c_id %> " class="btn btn-secondary btn-sm">+ Playlist</a>
+                                <div class="link-container">
+                                    <div class="watch-div"><a href="/courses/<%= data[i].c_id %> "
+                                            class="btn btn-secondary btn-sm btn-submit">Watch</a></div>
+                                    <div class="btn-div">
+                                        <form class="myForm" id="form-<%= i %>" method="POST" action="/playlist/<%= data[i].c_id %>" >
+                                            <button class="btn btn-secondary btn-sm  btn-submit" name="btn">
+                                                +Playlist</button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <% } %>
                     </div>
-                        <div><hr style="border:none;height: 0;border-top:3px solid black ;"></div>
+                    <div>
+                        <hr style="border:none;height: 0;border-top:3px solid black ;">
+                    </div>
                     <!--                    Here ends gallery section and starts latest section-->
                     <div class="tutorials">
                         <div class="title-one"><Span>Tutorials</Span></div>
@@ -189,6 +202,10 @@
         </div>
     </main>
 
+    
+    <script src="/js/home.js"></script>
+
+    
 </body>
 
 </html>

@@ -10,7 +10,8 @@
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu+Mono:ital@1&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu+Mono:ital@1&display=swap"
+    rel="stylesheet">
 
   <link href="/css/playlist.css" rel="stylesheet">
 </head>
@@ -25,29 +26,39 @@
 
   <section class="container playlist-section">
     <div class="playlist-container">
-      <% for(let i=0;i<data.playIds.length;i++){ %> 
-        <div class="playlist-item">
-          <div class="number">
-            <h2 style="color: #ECEFF0;margin-right: 5px;"> &nvrArr;</h2>
-          </div>
-          <div class="thumbnail"><img src="/images/<%= i+1 %>.jpg"></div>
-          <div class="info" >
-            <div class="course-name"><h1> <%= name[i] %> </h1></div>
-            <div class="course-domain"> <p>Subject: </p><h4> <%= subject[i] %> </h4></div>
-            <div class="btn-container">
-              <a class="btn btn-primary btn-outline-light link" href="/courses/<%= data.playIds[i] %> ">Watch</a>
-              <a class="btn btn-primary btn-outline-light link" href="">Remove</a>
-            </div>
-          </div>
-        </div> 
-        <% } %> 
+      <% if(data==null ||data.playIds.length==0){ %>
+      <div id="error">
+        <h3 id="error-p">No Courses Added in Playlist</h3>
+      </div>
+      <% } else {%>
 
+      <% for(let i=0;i<data.playIds.length;i++){ %>
+      <div class="playlist-item">
+        <div class="number">
+          <h2 style="color: #ECEFF0;margin-right: 5px;"> &nvrArr;</h2>
+        </div>
+        <div class="thumbnail"><img src="/images/<%= i+1 %>.jpg"></div>
+        <div class="info">
+          <div class="course-name">
+            <h1> <%= name[i] %> </h1>
+          </div>
+          <div class="course-domain">
+            <p>Subject: </p>
+            <h4> <%= subject[i] %> </h4>
+          </div>
+          <div class="btn-container">
+            <a class="btn btn-primary btn-outline-light link" href="/courses/<%= data.playIds[i] %> ">Watch</a>
+            <form method="POST" action="/playlist/<%= data.playIds[i] %>?_method=DELETE"  style="display: inline-block;">
+              <button class="btn btn-primary btn-outline-light link" href="">Remove</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <% } %>
+
+      <% } %>
   </section>
 
-
-  <!-- <% for(let i=0;i<name.length;i++){ %>
-  <a href="/courses/<%= data.playIds[i] %>"> <%= name[i] %> </a>
-  <% } %> -->
 
 </body>
 

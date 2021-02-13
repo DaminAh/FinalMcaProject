@@ -14,10 +14,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> -->
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!-- Main CSS File -->
   <link href="/css/style-main.css" rel="stylesheet">
 </head>
@@ -79,6 +76,12 @@
                 <%= data.t_name; %>
               </h4>
               <p><%= data.t_description %> </p>
+
+              <form class="myForm" id="add-playlist" method="POST" action="/playlist/<%= data.c_id %>" >
+                <button class="btn btn-secondary btn-sm  btn-submit" name="btn">
+                    +Playlist</button>
+            </form>
+
             </div>
           </div>
         </div>

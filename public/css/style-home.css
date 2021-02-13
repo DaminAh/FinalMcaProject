@@ -2,7 +2,10 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
 
+body {
+    position: relative;
 }
 
 
@@ -73,6 +76,11 @@ a {
     color: black;
 }
 
+.side-links:hover {
+    text-decoration: none;
+    color: white;
+}
+
 .main-content {
     /*    width: 80%;*/
     height: 800px;
@@ -117,7 +125,7 @@ li {
 
 
 .main-left {
-    height: auto:;
+    height: auto;
     background-color: #EE6C4D;
     padding-top: .5rem;
     border-radius: 10px;
@@ -146,8 +154,10 @@ li {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     border: 1px solid black;
+    position: relative;
 }
-.gallery-img img{
+
+.gallery-img img {
     height: 200px;
     width: 320px;
     display: block;
@@ -159,7 +169,7 @@ li {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-content:space-around;
+    align-content: space-around;
 }
 
 .video-item {
@@ -173,17 +183,18 @@ li {
     margin-left: 15px;
 }
 
-.gallery-div a{
+.gallery-div a {
     margin-top: 7px;
 }
 
-.gallery-div a:hover{
-width:100px;
-height: 40px;
+.gallery-div a:hover {
+    /* width:100px;
+height: 40px; */
+    /* background-color: rgb(17, 137, 241); */
+    /* transition:  background-color 500ms linear; *
 text-align: center;
-line-height: 33px;
-background-color: rgb(17, 137, 241);
-transition:  background-color 500ms linear;
+/* line-height: 33px; */
+    background-color: #EE6C4D;
 }
 
 .gallery-div:hover {
@@ -221,9 +232,10 @@ transition:  background-color 500ms linear;
     font-family: 'Montserrat', sans-serif;
     margin-top: 10px;
 }
-.gallery-div{
+
+.gallery-div {
     /* height: 137px; */
-    height:135px ;
+    height: 135px;
 }
 
 
@@ -240,3 +252,62 @@ transition:  background-color 500ms linear;
 
     height: 1200px;
 }
+
+.form-one {
+    display: inline;
+}
+
+.link-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+}
+
+/* .btn-submit{
+    display: block;
+    position: absolute;
+    margin-left: 100px;
+    bottom: 0;
+} */
+
+.btn-div {
+    margin-left: 20px;
+    position: relative;
+    margin-top: 7px;
+}
+
+.btn-submit:hover {
+    background-color: #EE6C4D;
+    border: 2px solid black;
+}
+
+.btn-submit {
+    border: 1px solid black;
+}
+
+.pop-up {
+    background-color: #8E9090;
+    height: 30px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    width: 70px;
+    position: absolute;
+    border: 1px solid black;
+    top: 40%;
+    left: 40%;
+}
+
+.pop-up p {
+    color: #EE6C4D;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    color: cornsilk;
+}
+
+.display-false{
+ visibility: hidden ;
+}
+
