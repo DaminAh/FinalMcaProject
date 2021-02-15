@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #EE6C4D;
+}
+/* 
+Navbar Styling */
+.navbar {
+  background-color: #ECEFF0;
+}
+
+.a-text{
+  font-size: 16px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.a-text:hover{
+  background-color: black;
+}
+
+.a-logout{
+  border: none;
+}
+
+#nav-a {
+  font-size: 2.2rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#nav-a:hover {
+  color: black;
+  font-size: 2rem;
+  transform: translate(40px);
+}
+
+.navbar-brand:hover {
+  text-decoration-color: #fbc531;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbar .navbar-nav .nav-link {
+  color: black;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  color: #EE6C4D;
+}
+
+.navbar .navbar-nav .active>.nav-link {
+  color:#EE6C4D;
+}
+
+/* Main Body CSS */
+
+.heading{
+  text-align: center ;
+}
+
+.course-container{
+  border: 1px solid #EE6C4D;
+  height: auto;
+  border-radius: 10px;
+}
+.course-item{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 15px;
+  background-color: #ECEFF0;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.card-container img{
+  height: 200px;
+  width:  350px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.card-heading{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-basis: 350px;
+  flex-grow: 0;
+  flex-shrink: 1;
+}
+
+.button-div button{
+  display: inline-block;
+  margin: 5px;
+}
+
+form{
+  display: inline;
+}
+
+.course-description{
+  border:1px solid gold;
+  height: 200px;
+  width: 430px;
+  /* margin-left:10px ; */
+  align-self: center;
+  overflow: hidden;
+  padding: 10px;
+  padding-top: 30px;
+  font-size:smaller;
+  border:3px solid black;
+  border-radius: 10px;
+}
+
+.heading{
+  background-color: #ECEFF0;
+  border-radius: 10px;
+}
+
+/* JS classes */
+.hide{
+  display: none;
+}
+.show{
+  display: flex;
+  /* visibility: hidden; */
+}
+
+.search-conatiner{
+  text-align: center;
+  padding: 1rem;
+  margin-top: 10px;
+}
+
+#search{
+  background-color: #ECEFF0;
+  font-size: 1.5rem;
+  padding: 15px;
+  border-radius: 15px;
+  font-family: 'Titillium Web', sans-serif;
+}

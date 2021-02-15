@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title >Course <%= data.c_name %> </title>
+  <title>Course <%= data.c_name %> </title>
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/4ed4d66ea3.js" crossorigin="anonymous"></script>
@@ -13,8 +13,8 @@
   <!-- Bootstrap CSS and JS Files -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!-- Main CSS File -->
   <link href="/css/style-main.css" rel="stylesheet">
 </head>
@@ -77,10 +77,10 @@
               </h4>
               <p><%= data.t_description %> </p>
 
-              <form class="myForm" id="add-playlist" method="POST" action="/playlist/<%= data.c_id %>" >
+              <form class="myForm" id="add-playlist" method="POST" action="/playlist/<%= data.c_id %>">
                 <button class="btn btn-secondary btn-sm  btn-submit" name="btn">
-                    +Playlist</button>
-            </form>
+                  +Playlist</button>
+              </form>
 
             </div>
           </div>
@@ -103,63 +103,144 @@
   </div>
 
 
+  <!-- Comment section start -->
+  <section class="comment-section">
+    <div class="container comment-container">
+      <div class="row">
+
+        <div class="col-lg-8 comment-col">
+          <h2 style="display: inline-block;">Avg Score :
+            <% if(beta!=null) {%> 
+            <%= totalStars %> 
+            <%} else{%>
+                No ratings yet!!
+            <%}  %> </h2>
+          <h2>Reviews :</h2>
+          <% if(beta!=null){ %>
+          <div id="contentofsite" class="hide">
+            <% for(let i=0;i<beta.users_data.length;i++){ %>
+            <div class="comment-div">
+              <div class="comment-header">
+                <h3><%= beta.users_data[i].email %> </h3>
+              </div>
+              <div class="comment-body">
+                <p id="comment-body-p"><%= beta.users_data[i].review %> </p>
+              </div>
+            </div>
+            <%}  %>
+          </div>
+          <% } else{ %>
+          <h3 style="color: #ECEFF0;margin-left: 15px;"><b>NO REVIEWS YET</b>
+            <p style="margin-top: 10px;"><b>Be the first to comment!!</b>
+            </p>
+          </h3>
+          <% } %>
+          <% if(data!=null) {%>
+          <button class="btn btn-light btn-outline-dark" id="show" href="#contentofsite">Show More/Less</button>
+          <% } %>
+        </div>
+
+        <div class="col-lg-4 post-col">
+          <div class="form-group purple-border">
+            <form action="/review/<%= data.c_id %> " method="POST">
+              <label for="exampleFormControlTextarea4">
+                <h2 id="post-heading">Post Comment</h2>
+              </label>
+              <textarea class="form-control txt-area" name="review" placeholder="Max 250 characters" minlength="150"
+                maxlength="250" rows="5" required></textarea>
+
+              <div class="star-rating">
+                <div class="stars">
+
+                  <fieldset>
+                    <input class="star star-5" id="star-5" type="radio" name="stars" value="5" />
+                    <label class="star star-5" for="star-5"></label>
+                    <input class="star star-4" id="star-4" type="radio" name="stars" value="4" />
+                    <label class="star star-4" for="star-4"></label>
+                    <input class="star star-3" id="star-3" type="radio" name="stars" value="3" />
+                    <label class="star star-3" for="star-3"></label>
+                    <input class="star star-2" id="star-2" type="radio" name="stars" value="2" />
+                    <label class="star star-2" for="star-2"></label>
+                    <input class="star star-1" id="star-1" type="radio" name="stars" value="1" />
+                    <label class="star star-1" for="star-1"></label>
+                  </fieldset>
+
+                </div>
+
+                <div>
+
+                  <button type="submit" class=".btn btn-sm btn-outline-success" id="form-btn">Post Comment</button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- Comment Section End -->
 
 
 
-
-  <footer class="container" >
+  <footer class="container">
     <div class="jumbotron jumbotron-fluid  p-4 mt-5 mb-0">
       <div class="container">
         <div class="row">
           <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 cizgi">
             <div class="card border-0 text-dark footer-cards" style="border-radius: 20px;">
-              <div class="card-body  text-dark text-center" >
-                <h5 class="card-title text-dark display-4" >Chinar Academic</h5>
+              <div class="card-body  text-dark text-center">
+                <h5 class="card-title text-dark display-4">Chinar Academic</h5>
                 <p class="d-inline lead text-dark">PVT Limited © 2021<br>
                   <p class="d-inline lead text-dark">Kashmir<br>
 
-                </p>
+                  </p>
 
               </div>
             </div>
           </div>
 
           <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 cizgi" ">
-            <div class="card footer-cards" style="border-radius: 20px;">
-              <div class="card-body text-center">
-                <h5 class="card-title text-dark display-4">Contact</h5>
-                <a class="text-light d-block lead icon-a" style="margin-left: -20px" href="#"><i
-                    class="fa fa-phone fa-cog  text-dark icon"></i class='text-dark'><span class="text-dark">+91 0000 000 000</span></a>
-                <a class="text-dark d-block lead icon-a" href="#"><i class="fa fa-envelope icon"></i>admin@localhost.com</a>
-              </div>
+            <div class=" card footer-cards" style="border-radius: 20px;">
+            <div class="card-body text-center">
+              <h5 class="card-title text-dark display-4">Contact</h5>
+              <a class="text-light d-block lead icon-a" style="margin-left: -20px" href="#"><i
+                  class="fa fa-phone fa-cog  text-dark icon"></i class='text-dark'><span class="text-dark">+91 0000 000
+                  000</span></a>
+              <a class="text-dark d-block lead icon-a" href="#"><i
+                  class="fa fa-envelope icon"></i>admin@localhost.com</a>
             </div>
           </div>
+        </div>
 
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-            <div class="card footer-cards border-0" style="border-radius: 20px;">
-              <div class="card-body text-center">
-                <h5 class="card-title text-dark display-4" >Social Media</h5>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+          <div class="card footer-cards border-0" style="border-radius: 20px;">
+            <div class="card-body text-center">
+              <h5 class="card-title text-dark display-4">Social Media</h5>
 
-                <a class="text-light" href="https://www.facebook.com"><i class="fab fa-facebook-square fa-3x sm-icon"></i></a>
+              <a class="text-light" href="https://www.facebook.com"><i
+                  class="fab fa-facebook-square fa-3x sm-icon"></i></a>
 
-                <a class="text-light" href="https://www.twitter.com"><i class="fa fa-twitter-square fa-fw fa-3x sm-icon"></i></a>
+              <a class="text-light" href="https://www.twitter.com"><i
+                  class="fa fa-twitter-square fa-fw fa-3x sm-icon"></i></a>
 
-                <a class="text-light" href="https://www.instagram.com"><i class="fa fa-instagram fa-fw fa-3x sm-icon"></i></a>
+              <a class="text-light" href="https://www.instagram.com"><i
+                  class="fa fa-instagram fa-fw fa-3x sm-icon"></i></a>
 
-                <a class="text-light" href="https://www.linkedin.com"><i class="fa fa-linkedin fa-fw fa-3x sm-icon"></i></a>
+              <a class="text-light" href="https://www.linkedin.com"><i
+                  class="fa fa-linkedin fa-fw fa-3x sm-icon"></i></a>
 
-                
 
-              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
+    </div>
   </footer>
   <!--# Footer #-->
 
-  
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
   </script>

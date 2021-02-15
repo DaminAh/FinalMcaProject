@@ -1,38 +1,49 @@
-console.log('connected')
-let btn=document.querySelectorAll('.btn-vid');
-console.log(btn)
-let len=btn.length;
-for(let i=0;i<len;i++){
-  btn[i].addEventListener('click',()=>{
-    let iframe=btn[i].getAttribute("data-iframe");
+console.log("connected");
+let btn = document.querySelectorAll(".btn-vid");
+console.log(btn);
+let len = btn.length;
+for (let i = 0; i < len; i++) {
+  btn[i].addEventListener("click", () => {
+    let iframe = btn[i].getAttribute("data-iframe");
     console.log(iframe);
-    let iframeCont=document.querySelector('.iframe-cont');
-    iframeCont.innerHTML='';
-    iframeCont.innerHTML=btn[i].getAttribute("data-iframe");
-  })
-}
-const form=document.querySelector('#add-playlist');
-
-form.addEventListener('submit',async function(e){
-  e.preventDefault();
-  this.btn.innerHTML='Added to playlist';
-  let str=this.attributes.action.value;
-  axios.post(str, {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
+    let iframeCont = document.querySelector(".iframe-cont");
+    iframeCont.innerHTML = "";
+    iframeCont.innerHTML = btn[i].getAttribute("data-iframe");
   });
+}
 
+// Playlist Functionality Start
+const form = document.querySelector("#add-playlist");
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  this.btn.innerHTML = "Added to playlist";
+  let str = this.attributes.action.value;
+  axios
+    .post(str, {
+      firstName: "Fred",
+      lastName: "Flintstone",
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+});
+// Playlist Functionality End
 
-})
-
-
-
+let bool = true;
+const show = document.querySelector("#show");
+show.addEventListener("click", () => {
+  content = document.querySelector("#contentofsite");
+  if (bool) {
+    bool = false;
+    content.classList.remove("hide");
+  } else {
+    content.classList.add("hide");
+    bool = true;
+  }
+});
 
 //   form.addEventListener('submit', async function(e){
 //     e.preventDefault();
@@ -54,4 +65,3 @@ form.addEventListener('submit',async function(e){
 //     setTimeout(()=>{this.btn.innerHTML='+Playlist'},2000)
 //     let str=this.attributes.action.value;
 //     })
-

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/4ed4d66ea3.js" crossorigin="anonymous"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/all-courses.css">
+</head>
+
+<body>
+  <header>
+    <div class="container" style="padding: 0;margin-bottom: 15px;">
+      <nav class="navbar navbar-expand-lg " style="border-radius: 20px;">
+        <div class="container-fluid">
+          <a class="navbar-brand text-dark  " id="nav-a" href="/"><i class="fa fa-graduation-cap fa-lg mr-2"></i>CHINAR
+            ACADEMY</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
+            style="background-color:white;">
+            <span class="navbar-toggler-icon"><i class="fas fa-caret-square-down"></i></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav  ms-auto ">
+              <a class="nav-link active me-3" aria-current="page" href="/"><span class="a-text">Home</span></a>
+              <a class="nav-link me-3" href=""><span class="a-text">Browse</span></a>
+              <a class="nav-link me-3 " href="/profile"><span class="a-text">Profile</span></a>
+              <a class="nav-link me-3 btn btn-outline-dark" href="/logout" tabindex="-1"><span
+                  class="a-logout">Logout</span></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1 class=" heading">All Courses</h1>
+  </div>
+
+  <main>
+    <div class="container course-container">
+
+      <% let i=0 %>
+      <% for(let i=0;i<data.length;i++) {%>
+
+        <div class="course-item">
+          <div class="card-container">
+            <img src="/images/<%= i+1  %>.jpg">
+          </div>
+          <div class="card-heading">
+            <div>
+              <h3><%= data[i].c_name %> </h3>
+            </div>
+            <div>
+              <h4>Teacher : <%= data[i].t_name %></h4>
+            </div>
+            <div>
+              <h5>Subject : <%= data[i].domain %> </h5>
+            </div>
+            <div class="button-div">
+              <a href="/courses/<%= i+1 %> " class="btn btn-primary btn-outline-dark">Watch</a>
+              <form class="myForm" id="form-<%= i %>" method="POST" action="/playlist/<%= data[i].c_id %>" >
+                <button class="btn btn-secondary btn-outline-dark  btn-submit" name="btn">
+                    +Playlist</button>
+            </form>
+            </div>
+          </div>
+          <div class="course-description">
+            <span>
+              <%= data[i].c_des %>
+            </span>
+          </div>
+        </div>
+
+        <% } %> 
+    </div>
+  </main>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/all-courses.js"></script>
+</body>
+
+</html>
