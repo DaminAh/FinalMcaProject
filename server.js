@@ -7,6 +7,7 @@ const { auth, requiresAuth } = require("express-openid-connect");
 const Course = require("./models/course");
 const Playlist = require("./models/playlist");
 const Review = require("./models/review");
+const History = require("./models/history");
 const { json } = require("express");
 require("dotenv").config();
 
@@ -19,7 +20,7 @@ app.use(
 );
 app.use(methodOverride("_method"));
 app.set("views", path.join(__dirname, "views"));
-app.set("view-engine", "ejs");
+app.set("view engine", "ejs");
 
 mongoose
   .connect("mongodb://localhost:27017/chinarDB", {
@@ -55,9 +56,26 @@ app.get("/", async (req, res) => {
         $lt: 10,
       },
     });
+    const { email } = req.oidc.user;
+    const temp = await History.findOne({ email: email });
+    let beta = {};
+    if (temp != null) {
+      let arr_course = temp.course_array.reverse();
+      let arr_names = temp.course_names.reverse();
+      beta = {
+        course_array: arr_course,
+        course_names: arr_names,
+      };
+      // console.log("beta being set");
+    } else {
+      beta = null;
+      console.log("beta being set to null");
+    }
     res.render("home-page.ejs", {
       data,
+      beta,
     });
+    // console.log(history);
   } else {
     // console.log(req.params);
     res.render("front-page.ejs");
@@ -71,6 +89,17 @@ app.get("/profile", requiresAuth(), (req, res) => {
   res.render("profile.ejs", {
     data,
   });
+});
+
+// Search Course
+app.get("/search", requiresAuth(), async (req, res) => {
+  // console.log(req.query);
+  const { q } = req.query;
+  const data = await Course.find({
+    c_name: { $regex: q, $options: "$i $x" },
+  });
+  // console.log(data);
+  res.render("search-page", { data });
 });
 
 // All courses
@@ -89,7 +118,8 @@ app.get("/courses/browse", requiresAuth(), async (req, res) => {
 // To display a particular course
 app.get("/courses/:c_id", requiresAuth(), async (req, res) => {
   const c_id = req.params.c_id;
-  // console.log(`c_id ${c_id}`);
+  const { email } = req.oidc.user;
+  // console.log(email);
   try {
     const data = await Course.findOne({
       c_id,
@@ -97,6 +127,48 @@ app.get("/courses/:c_id", requiresAuth(), async (req, res) => {
     const beta = await Review.findOne({
       c_id,
     });
+
+    const omega = await History.findOne({ email: email });
+    if (omega == null) {
+      const c = new History({
+        email: email,
+        course_array: [c_id],
+        course_names: [data.c_name],
+      });
+      await c.save();
+      // console.log(c);
+    } else {
+      let arr = omega.course_array;
+      let temp = [];
+      let index = arr.indexOf(c_id);
+      if (index == -1) {
+        // console.log("adding to history");
+        arr.push(c_id);
+        omega.course_array = [];
+        omega.course_array = arr;
+
+        arr = omega.course_names;
+        arr.push(data.c_name);
+        omega.course_names = [];
+        omega.course_names = arr;
+        await omega.save();
+      } else {
+        arr.splice(index, 1);
+        arr.push(c_id);
+        omega.course_array = [];
+        omega.course_array = arr;
+
+        arr = omega.course_names;
+
+        arr.splice(index, 1);
+        arr.push(data.c_name);
+        omega.course_names = [];
+        omega.course_names = arr;
+
+        await omega.save();
+      }
+    }
+
     let totalStars;
     if (beta != null) {
       const arr = beta.users_data;
@@ -282,6 +354,14 @@ app.post("/review/:id", requiresAuth(), async (req, res) => {
     }
   }
   res.redirect(`/courses/${req.params.id}`);
+});
+
+app.get("/resources", requiresAuth(), (req, res) => {
+  res.render("academic.ejs");
+});
+
+app.get("/help", requiresAuth(), (req, res) => {
+  res.render("help.ejs");
 });
 
 // app.get("/test", (req, res) => {

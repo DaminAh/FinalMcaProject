@@ -25,6 +25,10 @@ Navbar Styling */
   background-color: black;
 }
 
+.links-nav{
+  margin-bottom:7px
+}
+
 .a-logout{
   border: none;
 }
@@ -38,10 +42,6 @@ Navbar Styling */
   color: black;
   font-size: 2rem;
   transform: translate(40px);
-}
-
-.links-nav{
-  margin-bottom:7px
 }
 
 .navbar-brand:hover {
@@ -130,5 +130,18 @@ form{
   border-radius: 10px;
 }
 
+.no-result{
+  margin: auto;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  padding: 20px;
+}
 
+#no-result-heading{
+  font-size: 1.5rem;
+  background-color: white;
+  padding: 10px;
+  border-radius: 15px;
+}
 

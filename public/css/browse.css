@@ -10,6 +10,7 @@ body {
 }
 /* 
 Navbar Styling */
+
 .navbar {
   background-color: #ECEFF0;
 }
@@ -55,6 +56,11 @@ Navbar Styling */
 
 .navbar .navbar-nav .active>.nav-link {
   color:#EE6C4D;
+}
+
+.links-nav{
+  margin-bottom:7px;
+  margin-left: 0;
 }
 
 /* Main Body CSS */

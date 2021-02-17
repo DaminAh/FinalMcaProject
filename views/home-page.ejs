@@ -3,6 +3,7 @@
 
 <head>
     <!-- Required meta tags -->
+    <title>Chinar Academy</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,7 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 
-    <title>Hello, world!</title>
+   
 </head>
 
 <body style="position: relative;">
@@ -36,30 +37,32 @@
                             class="web-title">ChinarAcademy</span><i class="fas fa-university fa-2x"></i></a>
                     </div>
                     <div class="col-lg-6">
-                        <div class="input-group rounded search-box">
-                            <input type="search" class="form-control rounded" placeholder="Search" />
-                            <span class="input-group-text border-0" id="search-addon">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        </div>
+                        <form action="/search" method="GET">
+                            <div class="input-group rounded search-box">
+                                <input type="search" class="form-control rounded" placeholder="Search" name="q" />
+                                <span class="input-group-text border-0" id="search-addon">
+                                    <button class="btn btn-light btn-outline-dark">Search</button>
+                                </span>
+                        </form>
                     </div>
-                    <div class="col-lg-3 main-profile">
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="drop-img" src="Images/profile-icon.jpg">
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="text-align: center;">
-                                <a href="/logout" class="dropdown-item " style="border: 1px solid black;
+                </div>
+                <div class="col-lg-3 main-profile">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <img class="drop-img" src="Images/profile-icon.jpg">
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="text-align: center;">
+                            <a href="/logout" class="dropdown-item " style="border: 1px solid black;
                                 border-radius: 10px;background-color: silver;"> Logout </a>
-                                <a href="/profile" class="dropdown-item " style="border: 1px solid black;
+                            <a href="/profile" class="dropdown-item " style="border: 1px solid black;
                                 border-radius: 10px;border-top: none;background-color: silver;">Profile</a>
 
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
     </header>
     <main>
@@ -71,32 +74,46 @@
                                     class="link-text">Home</span></a></li>
                         <li><i class="fab fa-hotjar side-bar-icon fa-2x"></i><a class="side-links" href="/courses"><span
                                     class="link-text">All Courses</span></a></li>
-                        <li><i class="fas fa-clock side-bar-icon fa-2x"></i><a class="side-links" href="/courses/browse" ><span
-                                    class="link-text">Browse Courses</span></a></li>
+                        <li><i class="fas fa-compass side-bar-icon fa-2x"></i><a class="side-links"
+                                href="/courses/browse"><span class="link-text">Browse Courses</span></a></li>
+
                     </ul>
                     <hr class="horizontal-rule">
 
                     <ul class="ul-two">
-                        <li><i class="fas fa-history side-bar-icon fa-2x"></i><a class="side-links" href="/playlist"><span
-                                    class="link-text">Playlist</span></a></li>
-                        <li><i class="fas fa-compass side-bar-icon fa-2x"></i><a class="side-links" href=""><span
-                                    class="link-text">Browse Courses</span></a></li>
-                        <li><i class="fas fa-hands-helping side-bar-icon fa-2x"></i><a class="side-links" href=""><span
+                        <li><i class="fas fa-history side-bar-icon fa-2x"></i><a class="side-links"
+                                href="/playlist"><span class="link-text">Playlist</span></a></li>
+
+                        <li><i class="fas fa-clock side-bar-icon fa-2x"></i><a class="side-links"
+                                href="/resources"><span class="link-text">Academic Material</span></a></li>
+                        <li><i class="fas fa-hands-helping side-bar-icon fa-2x"></i><a class="side-links" href="/help"><span
                                     class="link-text">Help</span></a></li>
                     </ul>
-                    <hr class="horizontal-rule">
+                    <hr style="margin-bottom: 0;" class="horizontal-rule">
 
-                    <div>
-                        <h4 class="watch">Watch List</h4>
-                        <a href="/courses/1">JS Course One</a>
-                        <a href="/courses/2">Algorithim course</a>
-                        <a href="/courses/3">Algorithim course</a>
-                        <a href="/playlist">Playlist</a>
+                    <div class="history">
+                        <div class="history-heading">History</div>
+                        <div class="btn-group-vertical btn-group" role="group" aria-label="Basic example">
+
+                            <% if(beta!=null){ %>
+                            <% if(beta.course_names.length>10) {%>
+                            <% for(let x=0;x< 10;x++) {%>
+                            <a type="button" class="btn history-button btn-outline-dark"
+                                href="/courses/<%= beta.course_array[x] %> "><%= beta.course_names[x] %> </a>
+                            <% } %>
+                            <% } else{ %>
+                            <% for(let x=0;x< beta.course_array.length;x++) {%>
+                            <a type="button" class="btn history-button btn-outline-dark"
+                                href="/courses/<%= beta.course_array[x] %> "><%= beta.course_names[x] %> </a>
+                            <% } %>
+                            <% } %>
+                            <% } %>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-lg-10 main-right">
-                    <div class="title-one"><Span>Latest Courses</Span></div>
+                    <div class="title-one"><Span>New Courses</Span></div>
 
                     <div class="latest-gallery">
                         <% let i=0 %>
@@ -115,7 +132,8 @@
                                     <div class="watch-div"><a href="/courses/<%= data[i].c_id %> "
                                             class="btn btn-secondary btn-sm btn-submit">Watch</a></div>
                                     <div class="btn-div">
-                                        <form class="myForm" id="form-<%= i %>" method="POST" action="/playlist/<%= data[i].c_id %>" >
+                                        <form class="myForm" id="form-<%= i %>" method="POST"
+                                            action="/playlist/<%= data[i].c_id %>">
                                             <button class="btn btn-secondary btn-sm  btn-submit" name="btn">
                                                 +Playlist</button>
                                         </form>
@@ -129,83 +147,19 @@
                         <hr style="border:none;height: 0;border-top:3px solid black ;">
                     </div>
                     <!--                    Here ends gallery section and starts latest section-->
-                    <div class="tutorials">
-                        <div class="title-one"><Span>Tutorials</Span></div>
 
-                        <div class="tutorial-gallery">
-
-                            <div class="tgallery-item">
-                                <iframe class="video-item" width="224px" height="300px"
-                                    src="https://www.youtube.com/embed/JJSoEo8JSnc" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                                <div class="gallery-div">
-                                    <h4>Flex Box-CSS</h4>
-                                    <p>Subject: Front-end Development</p>
-                                </div>
-                            </div>
-
-                            <div class="tgallery-item">
-                                <iframe class="video-item" width="224px" height="300px"
-                                    src="https://www.youtube.com/embed/AADZo73yrq4" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                                <div class="gallery-div">
-                                    <h4>ARM Architecture</h4>
-                                    <p>Subject:CPU Architcture & ISA</p>
-                                </div>
-                            </div>
-
-                            <div class="tgallery-item">
-                                <iframe class="video-item" width="224px" height="300px"
-                                    src="https://www.youtube.com/embed/hBh_CC5y8-s" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                                <div class="gallery-div">
-                                    <h4>Java Coding</h4>
-                                    <p>Subject:Programing Languages</p>
-                                </div>
-                            </div>
-
-                            <div class="tgallery-item">
-                                <iframe class="video-item" width="224px" height="300px"
-                                    src="https://www.youtube.com/embed/sxTmJE4k0ho" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                                <div class="gallery-div">
-                                    <h4>Python Coding</h4>
-                                    <p>Subject:Programing Languages</p>
-                                </div>
-                            </div>
-
-                            <div class="tgallery-item">
-                                <iframe class="video-item" width="224px" height="300px"
-                                    src="https://www.youtube.com/embed/DVRQoVRzMIY" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                                <div class="gallery-div">
-                                    <h4>Git Tutorial</h4>
-                                    <p>Subject:Version control system </p>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
 
 
 
 
+                </div>
             </div>
-        </div>
     </main>
 
-    
+
     <script src="/js/home.js"></script>
 
-    
+
 </body>
 
 </html>

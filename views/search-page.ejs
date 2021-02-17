@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Courses</title>
+  <title>Search</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -17,7 +18,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="/css/all-courses.css">
+  <link rel="stylesheet" href="/css/serach-page.css">
 </head>
 
 <body>
@@ -34,7 +35,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav  ms-auto ">
-              <a class="nav-link links-nav active me-3" aria-current="page" href="/"><span class="a-text">Home</span></a>
+              <a class="nav-link links-nav active me-3"  aria-current="page" href="/"><span class="a-text">Home</span></a>
               <a class="nav-link links-nav me-3" href="/courses/browse"><span class="a-text">Browse</span></a>
               <a class="nav-link links-nav me-3 " href="/profile"><span class="a-text">Profile</span></a>
               <a class="nav-link links-nav me-3 btn btn-outline-dark" href="/logout" tabindex="-1"><span
@@ -47,13 +48,17 @@
   </header>
 
   <div class="container">
-    <h1 class=" heading">All Courses</h1>
+    <h1 class=" heading">Search Result</h1>
   </div>
 
   <main>
     <div class="container course-container">
 
-      <% let i=0 %>
+      <% if(data.length==0) {%>
+      <div class="no-result"> <span id="no-result-heading">No Result Found For Your Search</span> </div>
+      <% } else {%>
+        <div class="no-result"> <span id="no-result-heading"><%= data.length %> Results Found </span> </div>
+        <% let i=0 %>
       <% for(let i=0;i<data.length;i++) {%>
 
         <div class="course-item">
@@ -71,7 +76,7 @@
               <h5>Subject : <%= data[i].domain %> </h5>
             </div>
             <div class="button-div">
-              <a href="/courses/<%= i+1 %> " class="btn btn-primary btn-outline-dark">Watch</a>
+              <a href="/courses/<%= data[i].c_id%> " class="btn btn-primary btn-outline-dark">Watch</a>
               <form class="myForm" id="form-<%= i %>" method="POST" action="/playlist/<%= data[i].c_id %>" >
                 <button class="btn btn-secondary btn-outline-dark  btn-submit" name="btn">
                     +Playlist</button>
@@ -86,6 +91,8 @@
         </div>
 
         <% } %> 
+
+      <% } %>
     </div>
   </main>
 
